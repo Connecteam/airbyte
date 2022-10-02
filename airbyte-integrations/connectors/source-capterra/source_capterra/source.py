@@ -90,7 +90,7 @@ class CapterraStream(HttpStream, ABC):
         :return an iterable containing each record in the response
         """
         for row in response.json()['data']:
-            pk = f"{row['date_of_report']}_{row['vendor_name']}_{row['product_name']}_{row['category']}"
+            pk = f"{row['date_of_report']}_{row['vendor_name']}_{row['product_name']}_{row['category']}_{row['channel']}_{row['country']}"
             row['capterra_pk'] = pk
             yield row
 
@@ -160,7 +160,7 @@ class Clicks(IncrementalCapterraStream):
         """
         dest_time = datetime.utcnow() - timedelta(days=1) # capterra have no data for today
         if not stream_state or not stream_state.get('date_of_report_state'):
-            return [{'date': dest_time.strftime('%Y-%m-%d')}]
+            return [{'date': '2022-06-01'}]
         last_date_got = stream_state.get('date_of_report_state')
         result = []
         last_date_got = datetime.strptime(last_date_got, DATE_FORMAT).date()
