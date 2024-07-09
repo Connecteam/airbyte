@@ -189,5 +189,5 @@ class SourceCapterra(AbstractSource):
         """
         :param config: A Mapping of the user input configuration as defined in the connector spec.
         """
-        auth = TokenAuthenticator(token=config['api_key'])  # Oauth2Authenticator is also available if you need oauth support
+        auth = TokenAuthenticator(token=config['api_key'], auth_method="")  # Oauth2Authenticator is also available if you need oauth support
         return [Clicks(authenticator=auth)]
