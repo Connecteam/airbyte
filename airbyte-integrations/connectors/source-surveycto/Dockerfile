@@ -1,4 +1,4 @@
-FROM python:3.10.8-slim-bullseye as base
+FROM python:3.10-slim-bookworm as base
 
 # build and load all requirements
 FROM base as builder
@@ -37,6 +37,6 @@ COPY source_surveycto ./source_surveycto
 ENV AIRBYTE_ENTRYPOINT "python /airbyte/integration_code/main.py"
 ENTRYPOINT ["python", "/airbyte/integration_code/main.py"]
 
-LABEL io.airbyte.version=0.1.2
+LABEL io.airbyte.version=0.1.3
 LABEL io.airbyte.name=airbyte/source-surveycto
 
