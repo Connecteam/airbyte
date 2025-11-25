@@ -1,4 +1,4 @@
-FROM python:3.9-slim
+FROM python:3.9-slim-bookworm
 
 # Bash is installed for more convenient debugging.
 # Include socat binary in the connector image
