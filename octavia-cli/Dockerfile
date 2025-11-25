@@ -1,7 +1,8 @@
-FROM python:3.9-slim as base
+FROM python:3.9-slim-bookworm as base
 
-RUN apt-get upgrade \
-    && pip install --upgrade pip
+RUN apt-get update && apt-get upgrade -y \
+    && pip install --upgrade pip \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /home/octavia-cli
 COPY . ./
